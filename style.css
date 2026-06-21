@@ -244,7 +244,8 @@ body {
 }
 
 .social_media .fa-github,
-.fa-linkedin {
+.social_media .fa-linkedin,
+.social_media .fa-envelope {
   width: fit-content;
   font-size: 2em;
   letter-spacing: 1rem;
@@ -252,7 +253,8 @@ body {
 }
 
 .social_media .fa-github:hover,
-.fa-linkedin:hover {
+.social_media .fa-linkedin:hover,
+.social_media .fa-envelope:hover {
   color: var(--color5);
   transition: color 1s ease;
 }
@@ -992,21 +994,26 @@ h1 span:nth-child(12) {
 .footer-container {
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-  height: 12vh;
+  justify-content: center;
+  padding: 2em 1em;
+  height: auto;
+  gap: 1.5em;
   background: var(--color4);
   color: var(--color4);
   border: none;
-  line-height: 2em;
+  line-height: 1.6em;
+  text-align: center;
 }
 
 .footer-content {
-  font-size: 1.3em;
+  font-size: 1.1em;
   font-weight: 500;
   letter-spacing: 1px;
   color: var(--color5);
   font-family: var(--font1);
+  max-width: 800px;
 }
 
 .footer-icons {
