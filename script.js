@@ -208,6 +208,9 @@ window.unhoverImage1 = (element) => { element.src = "public/project img/ChromExt
 window.hoverImage2 = (element) => { element.src = "public/project img/aiprviewer2.png"; };
 window.unhoverImage2 = (element) => { element.src = "public/project img/aiprviewer1.png"; };
 
+window.hoverImage3 = (element) => { element.src = "public/project img/paperportal2.jpg"; };
+window.unhoverImage3 = (element) => { element.src = "public/project img/paperportal1.jpg"; };
+
 /* ==========================================================================
    Certification Modal Lightbox Functions
    ========================================================================== */
