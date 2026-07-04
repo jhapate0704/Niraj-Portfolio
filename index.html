@@ -358,6 +358,107 @@
       </div>
     </section>
 
+    <section>
+      <!-- Container for container reveal -->
+      <div class="container reveal">
+        <!-- Container for text-container -->
+        <div class="text-container">
+          <!-- Container for text-box stacked-project -->
+          <div class="text-box stacked-project">
+            <h1 class="project-title">TrimSync — Barber's App</h1>
+            <!-- Container for carousel-wrapper - auto-scrolling horizontal image slider -->
+            <div class="carousel-wrapper">
+              <div class="carousel-track" id="barberCarousel">
+                <div class="carousel-slide">
+                  <img src="public/project img/Barber1.png" alt="TrimSync Marketplace" />
+                </div>
+                <div class="carousel-slide">
+                  <img src="public/project img/Barber2.png" alt="TrimSync Booking" />
+                </div>
+                <div class="carousel-slide">
+                  <img src="public/project img/Barber3.png" alt="TrimSync Dashboard" />
+                </div>
+                <div class="carousel-slide">
+                  <img src="public/project img/Barber4.png" alt="TrimSync Chair Management" />
+                </div>
+                <!-- Duplicate slides for seamless infinite loop -->
+                <div class="carousel-slide">
+                  <img src="public/project img/Barber1.png" alt="TrimSync Marketplace" />
+                </div>
+                <div class="carousel-slide">
+                  <img src="public/project img/Barber2.png" alt="TrimSync Booking" />
+                </div>
+                <div class="carousel-slide">
+                  <img src="public/project img/Barber3.png" alt="TrimSync Dashboard" />
+                </div>
+                <div class="carousel-slide">
+                  <img src="public/project img/Barber4.png" alt="TrimSync Chair Management" />
+                </div>
+              </div>
+            </div>
+            <!-- Container for project-overview -->
+            <div class="project-overview">
+              <br>
+              <p>
+                <strong>TrimSync</strong> is a full-stack, real-time marketplace and management platform designed to
+                connect customers with top-tier salons and barbershops. Built on the MERN stack and highly optimized
+                for real-time interactivity, it features a stunning dynamic UI, live queue tracking via WebSockets,
+                and dedicated dashboards for both customers and salon owners.
+              </p>
+
+              <p>
+                <strong>🔍 Marketplace Discovery:</strong> Customers can browse local salons and barbershops with a
+                real-time "Live Shop Floor" — see instantly if a chair is occupied or open without ever refreshing the
+                page. The live status is powered by Socket.io WebSockets, creating a seamless, always-updated
+                experience.
+              </p>
+
+              <p>
+                <strong>📅 Seamless Booking Wizard:</strong> A step-by-step, interactive booking flow lets customers
+                select services, choose their preferred professional, and lock in appointment times — all through a
+                smooth, guided UI with micro-animations and real-time availability checks.
+              </p>
+
+              <p>
+                <strong>💈 Owner Dashboard &amp; Chair Management:</strong> Salon owners get a centralized control panel
+                to manage daily operations. They can mark chairs as occupied, free, or assigned to specific bookings
+                in real time, keeping the Live Shop Floor accurate. Service pricing, operating hours, and portfolio
+                images (via Cloudinary CDN) are fully customizable.
+              </p>
+
+              <p>
+                <strong>⚙️ Architecture &amp; Workflow:</strong> The backend runs on Node.js + Express with MongoDB
+                &amp; Mongoose as the database layer. JWT-based authentication secures all protected routes, while
+                bcrypt handles password hashing. The frontend (React 18 + Vite) communicates via RESTful APIs and
+                Socket.io for real-time events. Cloudinary integration handles all image storage and delivery.
+              </p>
+
+              <p>
+                <strong>🔒 Security &amp; Best Practices:</strong> All API routes are protected via JWT middleware.
+                Passwords are hashed with bcrypt before storage. The frontend architecture is rigorously split and
+                scoped to prevent unauthorized rendering — ensuring a production-grade, secure application.
+              </p>
+            </div>
+            <!-- Container for project-links -->
+            <div class="project-links">
+              <a href="https://github.com/jhapate0704/Barbers-App" target="_blank"><i
+                  class="fa-brands fa-github fa-beat"></i></a>
+
+              <button class="tags">React 18</button>
+              <button class="tags">Node.js</button>
+              <button class="tags">Express</button>
+              <button class="tags">MongoDB</button>
+              <button class="tags">Socket.io</button>
+              <button class="tags">JWT</button>
+              <button class="tags">Cloudinary</button>
+              <button class="tags">TailwindCSS</button>
+              <button class="tags">Vite</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
     <hr />
     <br />

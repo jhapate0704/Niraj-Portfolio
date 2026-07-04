@@ -2116,6 +2116,79 @@ hr {
   left: auto;
 }
 
+/* ========================================================================
+   Project Image Carousel — Infinite Horizontal Auto-Scroll
+   ======================================================================== */
+
+/* Styles for: .carousel-wrapper */
+.carousel-wrapper {
+  width: 80%;
+  margin: 1.5em auto;
+  overflow: hidden;
+  border-radius: 16px;
+  position: relative;
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+/* Styles for: .carousel-track */
+.carousel-track {
+  display: flex;
+  width: max-content;
+  animation: carouselScroll 20s linear infinite;
+}
+
+/* Styles for: .carousel-track:hover */
+.carousel-track:hover {
+  animation-play-state: paused;
+}
+
+/* Styles for: .carousel-slide */
+.carousel-slide {
+  flex: 0 0 auto;
+  width: 50%;
+  min-width: 320px;
+  max-width: 550px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+/* Styles for: .carousel-slide img */
+.carousel-slide img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Styles for: .carousel-slide img:hover */
+.carousel-slide img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+}
+
+@keyframes carouselScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Responsive: carousel on smaller screens */
+@media (max-width: 768px) {
+  .carousel-wrapper {
+    width: 95%;
+  }
+  .carousel-slide {
+    min-width: 260px;
+    max-width: 100%;
+  }
+}
+
 /* Certifications Bento Grid */
 /* Styles for: .certifications-container */
 .certifications-container {
