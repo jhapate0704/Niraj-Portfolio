@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initNavigation();
   initBackToTop();
   initContactForm();
+  initCarousels();
 });
 
 /**
@@ -199,8 +200,61 @@ function showFormAlert(dialog, color, message) {
 }
 
 /* ==========================================================================
-   Project Hover Image Functions — REMOVED (replaced by carousel sliders)
+   Project Carousel Functions
    ========================================================================== */
+
+/**
+ * Initializes the single-slide carousels with pagination dots.
+ */
+function initCarousels() {
+  const carousels = document.querySelectorAll('.carousel-wrapper');
+  
+  carousels.forEach(wrapper => {
+    const track = wrapper.querySelector('.carousel-track');
+    const slides = wrapper.querySelectorAll('.carousel-slide');
+    const indicators = wrapper.querySelector('.carousel-indicators');
+    
+    if (!track || slides.length === 0 || !indicators) return;
+    
+    // Create dots
+    slides.forEach((_, index) => {
+      const dot = document.createElement('div');
+      dot.classList.add('carousel-dot');
+      if (index === 0) dot.classList.add('active');
+      
+      dot.addEventListener('click', () => {
+        // Scroll to the specific slide
+        const slideWidth = slides[0].getBoundingClientRect().width;
+        track.scrollTo({
+          left: slideWidth * index,
+          behavior: 'smooth'
+        });
+      });
+      
+      indicators.appendChild(dot);
+    });
+    
+    const dots = indicators.querySelectorAll('.carousel-dot');
+    
+    // Update active dot on scroll
+    track.addEventListener('scroll', () => {
+      const scrollPosition = track.scrollLeft;
+      const slideWidth = slides[0].getBoundingClientRect().width;
+      
+      // Calculate which slide is currently most visible
+      const currentIndex = Math.round(scrollPosition / slideWidth);
+      
+      // Update classes
+      dots.forEach((dot, index) => {
+        if (index === currentIndex) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    });
+  });
+}
 
 /* ==========================================================================
    Certification Modal Lightbox Functions
