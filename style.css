@@ -1532,9 +1532,23 @@ textarea:not(:placeholder-shown) ~ label {
     margin: 0;
     padding: 0;
   }
-/* Styles for: .text-box img */
-.text-box img {
-    width: 100%;
+/* Styles for: .stacked-project (mobile) */
+.stacked-project {
+    gap: 15px;
+    margin-bottom: 50px;
+  }
+/* Styles for: .stacked-project .project-title (mobile) */
+.stacked-project .project-title {
+    font-size: 1.6rem;
+  }
+/* Styles for: .stacked-project .carousel-wrapper (mobile) */
+.stacked-project .carousel-wrapper {
+    width: 95%;
+  }
+/* Styles for: .stacked-project .project-overview (mobile) */
+.stacked-project .project-overview {
+    width: 95%;
+    font-size: 0.9em;
   }
 /* Styles for: .project-links */
 .project-links {
@@ -2065,21 +2079,6 @@ hr {
   text-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Styles for: .stacked-project .image-wrapper */
-.stacked-project .image-wrapper {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Styles for: .stacked-project img */
-.stacked-project img {
-  width: 70%;
-  position: static;
-  display: block;
-  margin: 0 auto;
-}
 
 /* Styles for: .stacked-project .project-overview */
 .stacked-project .project-overview {
@@ -2184,8 +2183,12 @@ hr {
     width: 95%;
   }
   .carousel-slide {
-    min-width: 260px;
-    max-width: 100%;
+    min-width: 220px;
+    max-width: 320px;
+  }
+  .carousel-slide img {
+    width: 100%;
+    height: auto;
   }
 }
 
