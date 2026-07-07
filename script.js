@@ -204,31 +204,30 @@ function showFormAlert(dialog, color, message) {
    ========================================================================== */
 
 /**
- * Initializes the single-slide carousels with pagination dots.
+ * Initializes the single-slide carousels with pagination dots and auto-sliding.
  */
 function initCarousels() {
   const carousels = document.querySelectorAll('.carousel-wrapper');
   
   carousels.forEach(wrapper => {
     const track = wrapper.querySelector('.carousel-track');
-    const slides = wrapper.querySelectorAll('.carousel-slide');
+    const slides = Array.from(wrapper.querySelectorAll('.carousel-slide'));
     const indicators = wrapper.querySelector('.carousel-indicators');
     
     if (!track || slides.length === 0 || !indicators) return;
     
+    const count = slides.length;
+    let currentIndex = 0;
+    
     // Create dots
+    indicators.innerHTML = '';
     slides.forEach((_, index) => {
       const dot = document.createElement('div');
       dot.classList.add('carousel-dot');
       if (index === 0) dot.classList.add('active');
       
       dot.addEventListener('click', () => {
-        // Scroll to the specific slide
-        const slideWidth = slides[0].getBoundingClientRect().width;
-        track.scrollTo({
-          left: slideWidth * index,
-          behavior: 'smooth'
-        });
+        updateCarousel(index);
       });
       
       indicators.appendChild(dot);
@@ -236,23 +235,62 @@ function initCarousels() {
     
     const dots = indicators.querySelectorAll('.carousel-dot');
     
-    // Update active dot on scroll
-    track.addEventListener('scroll', () => {
-      const scrollPosition = track.scrollLeft;
-      const slideWidth = slides[0].getBoundingClientRect().width;
+    // Update classes based on index
+    const updateCarousel = (index) => {
+      currentIndex = index;
       
-      // Calculate which slide is currently most visible
-      const currentIndex = Math.round(scrollPosition / slideWidth);
-      
-      // Update classes
-      dots.forEach((dot, index) => {
-        if (index === currentIndex) {
-          dot.classList.add('active');
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active', 'prev', 'next', 'hidden');
+        
+        if (i === currentIndex) {
+          slide.classList.add('active');
+        } else if (i === (currentIndex - 1 + count) % count) {
+          slide.classList.add('prev');
+        } else if (i === (currentIndex + 1) % count) {
+          slide.classList.add('next');
         } else {
-          dot.classList.remove('active');
+          slide.classList.add('hidden');
+        }
+      });
+      
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentIndex);
+      });
+    };
+    
+    // Click navigation for slides
+    slides.forEach((slide, index) => {
+      slide.addEventListener('click', () => {
+        if (slide.classList.contains('prev') || slide.classList.contains('next')) {
+          updateCarousel(index);
+        } else if (slide.classList.contains('active')) {
+          const img = slide.querySelector('img');
+          if (img && typeof window.openLightbox === 'function') {
+            window.openLightbox(img.src);
+          }
         }
       });
     });
+
+    // Initial state
+    updateCarousel(0);
+
+    // Auto slide every 1.5 seconds
+    let autoSlideInterval;
+
+    const startAutoSlide = () => {
+      autoSlideInterval = setInterval(() => {
+        updateCarousel((currentIndex + 1) % count);
+      }, 1500);
+    };
+
+    const stopAutoSlide = () => {
+      clearInterval(autoSlideInterval);
+    };
+
+    startAutoSlide();
+    wrapper.addEventListener('mouseenter', stopAutoSlide);
+    wrapper.addEventListener('mouseleave', startAutoSlide);
   });
 }
 
