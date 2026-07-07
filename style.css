@@ -2058,7 +2058,7 @@ hr {
   justify-content: center;
   gap: 25px;
   position: relative;
-  overflow: visible;
+  overflow: hidden;
   margin-bottom: 80px;
 }
 
@@ -2149,6 +2149,9 @@ hr {
   z-index: 1;
   pointer-events: none;
   border-radius: 12px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: transform, opacity;
 }
 
 .carousel-slide.active {
