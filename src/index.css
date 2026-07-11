@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+:root {
+  /* Dark Theme (Default) */
+  --c-theme-1: #0d1321;
+  --c-theme-2: #748cab;
+  --c-theme-3: #3e5c76;
+  --c-theme-4: #1d2d44;
+  --c-theme-5: #f0ebd8;
+  --c-theme-6: #1e293b;
+}
+
+.light-theme {
+  /* Light Theme */
+  --c-theme-1: #f8fafc;
+  --c-theme-2: #2563eb;
+  --c-theme-3: #cbd5e1;
+  --c-theme-4: #f1f5f9;
+  --c-theme-5: #0f172a;
+  --c-theme-6: #e2e8f0;
+}
+
+@theme {
+  --color-theme-1: var(--c-theme-1);
+  --color-theme-2: var(--c-theme-2);
+  --color-theme-3: var(--c-theme-3);
+  --color-theme-4: var(--c-theme-4);
+  --color-theme-5: var(--c-theme-5);
+  --color-theme-6: var(--c-theme-6);
+
+  --animate-scroll: scroll 40s linear infinite;
+  --keyframes-scroll: {
+    0%: { transform: translateX(0); }
+    100%: { transform: translateX(calc(-50%)); }
+  };
+}
+
+body {
+  background-color: var(--c-theme-1);
+  color: var(--c-theme-5);
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
