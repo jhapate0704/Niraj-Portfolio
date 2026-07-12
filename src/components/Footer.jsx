@@ -7,7 +7,7 @@ const Footer = () => {
       
         
         <p className="font-bold text-theme-5/90 tracking-wider mb-4">
-        2026 @Niraj Jhapate
+        © 2026 Niraj Jhapate
         </p>
         
         <div className="flex justify-center items-center gap-8">

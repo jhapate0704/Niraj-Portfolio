@@ -26,7 +26,7 @@ const Hero = () => {
         </p>
         
         <div className="flex items-center justify-center md:justify-start gap-6">
-          <a href="https://www.linkedin.com/in/niraj-jhapate-669474299" target="_blank" rel="noreferrer" className="text-3xl  hover:text-blue-500 transition-colors">
+          <a href="https://www.linkedin.com/in/nirajjhapate" target="_blank" rel="noreferrer" className="text-3xl  hover:text-blue-500 transition-colors">
             <i className="fa-brands fa-linkedin fa-bounce"></i>
           </a>
           <a href="https://github.com/jhapate0704" target="_blank" rel="noreferrer" className="text-3xl color blackhover:text-theme-3 transition-colors">

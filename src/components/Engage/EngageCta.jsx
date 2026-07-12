@@ -17,7 +17,7 @@ const EngageCta = ({ fadeInUp }) => {
             <a href="https://mail.google.com/mail/?view=cm&fs=1&to=nirajjhapate1@gmail.com" className="text-xl font-bold text-[#22c55e] hover:text-[#4ade80] transition-colors border-b-2 border-transparent hover:border-[#22c55e] pb-1">
               nirajjhapate1@gmail.com
             </a>
-            <a href="https://www.linkedin.com/in/niraj-jhapate-669474299" target="_blank" rel="noreferrer" className="text-3xl hover:text-blue-500 blackhover:text-theme-2 transition-colors">
+            <a href="https://www.linkedin.com/in/nirajjhapate" target="_blank" rel="noreferrer" className="text-3xl hover:text-blue-500 blackhover:text-theme-2 transition-colors">
             <i className="fa-brands fa-linkedin fa-bounce"></i>
           </a>
           <a href="https://github.com/jhapate0704" target="_blank" rel="noreferrer" className="text-3xl color transition-colors">
