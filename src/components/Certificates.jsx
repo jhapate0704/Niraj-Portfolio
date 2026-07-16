@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const certificates = [
   { src: '/certificats/AWS_Training_Certification_possible.jpg', alt: 'AWS Training' },
   { src: '/certificats/AWS_Training_Certification_project.jpg', alt: 'AWS Project' },
-  { src: '/certificats/CodeSoft Int.jpeg', alt: 'CodeSoft' },
+  { src: '/certificats/Cadence WorkShop.jpg', alt: 'Cadence WorkShop' },
   { src: '/certificats/Niraj Jhapate.jpg', alt: 'Certificate' },
   { src: '/certificats/Outskill_Certificate.jpg', alt: 'Outskill' },
   { src: '/certificats/Shoe patent.jpeg', alt: 'Shoe patent' },
