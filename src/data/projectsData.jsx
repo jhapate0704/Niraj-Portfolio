@@ -62,7 +62,7 @@ export const projectsData = [
     },
     future: ["Custom Rule Definitions (Coding Standards)", "Vector embeddings for full codebase context", "Support for GitLab & Bitbucket"],
     links: {
-      demo: "https://aipullrequestreviewer.netlify.app/",
+      demo: "https://pr.nirajjhapate.in/",
       github: "https://github.com/jhapate0704/Ai-Pull-Requests-Reviewer",
       docs: "https://github.com/jhapate0704/Ai-Pull-Requests-Reviewer/blob/main/README.md"
     }
