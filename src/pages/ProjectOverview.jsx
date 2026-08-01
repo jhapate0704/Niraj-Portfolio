@@ -10,11 +10,13 @@ const ProjectOverview = () => {
   const [lightboxImg, setLightboxImg] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [showBootMessage, setShowBootMessage] = useState(false);
+  const [showDemoModal, setShowDemoModal] = useState(false);
 
   // Auto-scroll to top and trigger loader when navigating to a new project
   useEffect(() => {
     setIsLoading(true);
     setShowBootMessage(false);
+    setShowDemoModal(false);
     window.scrollTo(0, 0);
   }, [id]);
 
@@ -45,6 +47,14 @@ const ProjectOverview = () => {
   const closeLightbox = () => {
     setLightboxImg(null);
   };
+
+  const handleDemoClick = (e) => {
+    const isDemoAvailable = projectData.links?.demo && projectData.links.demo !== '#';
+    if (!isDemoAvailable) {
+      e.preventDefault();
+      setShowDemoModal(true);
+    }
+  };
   
   // Animation variants
   const fadeInUp = {
@@ -58,6 +68,7 @@ const ProjectOverview = () => {
 
   const currentIndex = projectsData.findIndex(p => p.id === id);
   const nextProject = currentIndex !== -1 ? projectsData[(currentIndex + 1) % projectsData.length] : null;
+  const hasLiveDemo = projectData.links?.demo && projectData.links.demo !== '#';
 
   return (
     <div className="bg-[#09090b] min-h-screen text-zinc-100 font-sans selection:bg-[#22c55e]/30 overflow-x-hidden">
@@ -96,8 +107,28 @@ const ProjectOverview = () => {
             {projectData.tagline}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 font-mono">
-            <a href={projectData.links.demo} className="px-6 py-3 bg-[#22c55e] text-black font-bold rounded hover:bg-[#16a34a] transition-all">[ Live Demo ]</a>
-            <a href={projectData.links.github} className="px-6 py-3 bg-[#18181b] border border-[#27272a] hover:border-[#eab308] text-zinc-300 font-bold rounded transition-all">[ GitHub ]</a>
+            <a 
+              href={hasLiveDemo ? projectData.links.demo : '#'} 
+              target={hasLiveDemo ? "_blank" : undefined}
+              rel={hasLiveDemo ? "noopener noreferrer" : undefined}
+              onClick={handleDemoClick}
+              className={`px-6 py-3 font-bold rounded transition-all flex items-center gap-2 cursor-pointer ${
+                hasLiveDemo 
+                  ? 'bg-[#22c55e] text-black hover:bg-[#16a34a]' 
+                  : 'bg-[#eab308]/20 border border-[#eab308]/40 text-[#eab308] hover:bg-[#eab308]/30'
+              }`}
+            >
+              <i className="fa-solid fa-globe"></i>
+              {hasLiveDemo ? '[ Live Demo ]' : '[ Live Demo Notice ]'}
+            </a>
+            <a 
+              href={projectData.links.github} 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 bg-[#18181b] border border-[#27272a] hover:border-[#eab308] text-zinc-300 font-bold rounded transition-all"
+            >
+              [ GitHub ]
+            </a>
             <a href="#case-study" className="px-6 py-3 bg-[#18181b] border border-[#27272a] hover:border-[#22c55e] text-zinc-300 font-bold rounded transition-all">[ Case Study ]</a>
           </div>
         </motion.div>
@@ -288,13 +319,34 @@ const ProjectOverview = () => {
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="text-center pb-20">
           <h2 className="text-4xl font-black mb-10 tracking-tight">Experience it live.</h2>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 font-mono">
-            <a href={projectData.links.demo} className="w-full sm:w-auto px-8 py-4 bg-[#22c55e] hover:bg-[#16a34a] text-black text-lg font-bold rounded-lg shadow-[0_0_20px_rgba(34,197,94,0.4)] transition-all hover:scale-105">
-              <i className="fa-solid fa-globe mr-2"></i> Live Demo
+            <a 
+              href={hasLiveDemo ? projectData.links.demo : '#'} 
+              target={hasLiveDemo ? "_blank" : undefined}
+              rel={hasLiveDemo ? "noopener noreferrer" : undefined}
+              onClick={handleDemoClick}
+              className={`w-full sm:w-auto px-8 py-4 text-lg font-bold rounded-lg transition-all hover:scale-105 cursor-pointer flex items-center justify-center ${
+                hasLiveDemo
+                  ? 'bg-[#22c55e] hover:bg-[#16a34a] text-black shadow-[0_0_20px_rgba(34,197,94,0.4)]'
+                  : 'bg-[#eab308]/20 border-2 border-[#eab308]/50 text-[#eab308] hover:bg-[#eab308]/30 shadow-[0_0_20px_rgba(234,179,8,0.2)]'
+              }`}
+            >
+              <i className="fa-solid fa-globe mr-2"></i> 
+              {hasLiveDemo ? 'Live Demo' : 'Live Demo (Local / Offline)'}
             </a>
-            <a href={projectData.links.github} className="w-full sm:w-auto px-8 py-4 bg-[#18181b] border-2 border-[#27272a] hover:border-[#eab308] text-zinc-300 text-lg font-bold rounded-lg transition-all hover:scale-105">
+            <a 
+              href={projectData.links.github} 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto px-8 py-4 bg-[#18181b] border-2 border-[#27272a] hover:border-[#eab308] text-zinc-300 text-lg font-bold rounded-lg transition-all hover:scale-105 flex items-center justify-center"
+            >
               <i className="fa-brands fa-github mr-2"></i> GitHub Repo
             </a>
-            <a href={projectData.links.docs} className="w-full sm:w-auto px-8 py-4 bg-[#18181b] border-2 border-[#27272a] hover:border-[#22c55e] text-zinc-300 text-lg font-bold rounded-lg transition-all hover:scale-105">
+            <a 
+              href={projectData.links.docs} 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto px-8 py-4 bg-[#18181b] border-2 border-[#27272a] hover:border-[#22c55e] text-zinc-300 text-lg font-bold rounded-lg transition-all hover:scale-105 flex items-center justify-center"
+            >
               <i className="fa-solid fa-file-lines mr-2"></i> Documentation
             </a>
           </div>
@@ -340,6 +392,73 @@ const ProjectOverview = () => {
             >
               <i className="fa-solid fa-xmark"></i>
             </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Demo Offline / Local Build Notice Modal */}
+      <AnimatePresence>
+        {showDemoModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[300] bg-black/80 backdrop-blur-md flex items-center justify-center p-4"
+            onClick={() => setShowDemoModal(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-[#121215] border border-[#eab308]/40 shadow-[0_0_35px_rgba(234,179,8,0.25)] rounded-2xl p-6 md:p-8 max-w-lg w-full font-mono text-zinc-100 relative"
+            >
+              <button 
+                onClick={() => setShowDemoModal(false)}
+                className="absolute top-4 right-4 text-zinc-500 hover:text-zinc-200 transition-colors text-lg"
+              >
+                <i className="fa-solid fa-xmark"></i>
+              </button>
+              
+              <div className="flex items-center gap-3 mb-4 text-[#eab308]">
+                <div className="w-10 h-10 rounded-lg bg-[#eab308]/10 border border-[#eab308]/30 flex items-center justify-center shrink-0">
+                  <i className="fa-solid fa-server text-lg"></i>
+                </div>
+                <h3 className="text-xl font-bold uppercase tracking-wider">Demo Environment Notice</h3>
+              </div>
+              
+              <p className="text-zinc-300 text-sm leading-relaxed mb-6">
+                A public live demo is currently not hosted online for <strong className="text-white">{projectData.title}</strong>. This project is configured to run in local development or custom enterprise environments.
+              </p>
+
+              <div className="bg-[#09090b] border border-[#27272a] p-4 rounded-xl mb-6 text-xs font-mono space-y-2">
+                <div className="flex items-center gap-2 text-[#eab308]">
+                  <span className="w-2 h-2 rounded-full bg-[#eab308] animate-ping"></span>
+                  <span className="font-bold uppercase">&gt; STATUS: LOCAL_SERVER_BUILD</span>
+                </div>
+                <p className="text-zinc-400">
+                  You can explore the complete codebase, architecture setup, and execution instructions directly on GitHub.
+                </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a
+                  href={projectData.links.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setShowDemoModal(false)}
+                  className="flex-1 px-5 py-3 bg-[#eab308] hover:bg-[#ca8a04] text-black font-bold rounded-lg text-center transition-colors text-sm flex items-center justify-center gap-2"
+                >
+                  <i className="fa-brands fa-github"></i> Open GitHub Repo
+                </a>
+                <button
+                  onClick={() => setShowDemoModal(false)}
+                  className="px-5 py-3 bg-[#18181b] hover:bg-[#27272a] border border-[#27272a] text-zinc-300 font-bold rounded-lg transition-colors text-sm"
+                >
+                  Close
+                </button>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

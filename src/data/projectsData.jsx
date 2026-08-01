@@ -250,5 +250,91 @@ export const projectsData = [
       docs: "https://github.com/jhapate0704/smart-bookmark/blob/main/README.md"
     }
   },
-  
+  // project 5
+  {
+    id: 'saas-monitoring-platform',
+    title: 'PulseWatch — SaaS Monitoring',
+    tagline: 'Enterprise multi-channel SaaS uptime & HTTP/SSL monitoring platform.',
+    client: 'Enterprise SaaS / Open Source',
+    duration: '4 Months',
+    role: 'Lead MERN Stack Developer',
+    category: 'DevOps / SaaS Monitoring',
+    status: 'Completed & Active',
+    teamSize: '1 (Solo Developer)',
+    completionDate: 'Feb 2026',
+    images: [
+      '/project img/monitaring1.png',
+      '/project img/monitaring2.png',
+      '/project img/monitaring3.png',
+      '/project img/monitaring4.png',
+      '/project img/monitaring5.png',
+    ],
+    description: (
+      <>
+        <p className="mb-4">
+          <strong>PulseWatch</strong> is an enterprise-grade, real-time SaaS monitoring and multi-channel alerting platform built with the MERN stack (MongoDB, Express, React 19, Node.js).
+        </p>
+        <p className="mb-4">
+          <strong>📡 Multi-Channel Alerting & SSRF Protection:</strong> Monitors HTTP/SSL health, keyword integrity, and latency in real time. Features instant alerts via Email (SMTP/Nodemailer), SMS (Twilio), and Discord Webhooks with built-in SSRF security filtering.
+        </p>
+      </>
+    ),
+    overview: "PulseWatch is a highly scalable, real-time SaaS monitoring platform built with the MERN stack. It empowers developers and DevOps teams to track service uptime, monitor HTTP/SSL certificates, detect keyword failures, receive multi-channel alerts (Email, SMS, Discord), and host public status pages.",
+    problem: "Modern microservices and SaaS web apps suffer from undetected downtime, silent SSL certificate expirations, and delayed alerting across fragmented communication channels without centralized real-time metric tracking.",
+    solution: "Architected a decoupled MERN platform utilizing Node-cron worker threads and Socket.io WebSockets for sub-second latency visualization. Integrated multi-channel alert dispatching (Email, SMS via Twilio, and Discord Webhooks) alongside SSRF security shields protecting internal network endpoints.",
+    features: [
+      "Real-Time HTTP & SSL Health Checks",
+      "Multi-Channel Alerts (Email, SMS, Discord)",
+      "Socket.io Sub-Second Latency Sync",
+      "SSRF Security Shield Regex Filtering",
+      "Public Status Pages & Incident Logging",
+      "Recharts Interactive Metric Graphs",
+      "Automated Keyword & SSL Expiration Detection",
+      "OWASP Audited Rate Limiting & Auth"
+    ],
+    tags: ['React 19', 'Node.js 18+', 'Express 5', 'MongoDB', 'Socket.io', 'Redis', 'Twilio API', 'Tailwind CSS'],
+    techStack: {
+      Frontend: ["React 19", "Vite", "Tailwind CSS", "Recharts", "Lucide React", "Socket.io-client"],
+      Backend: ["Node.js 18+", "Express 5", "MongoDB (Mongoose)", "Socket.io", "BullMQ", "Redis", "Node-cron"],
+      SecurityIntegrations: ["Nodemailer (SMTP)", "Twilio SMS API", "Discord Webhooks", "SSRF Regex Filter", "Helmet Headers", "JWT (HS256)"]
+    },
+    architecture: [
+      "React 19 Vite Dashboard",
+      "Express 5 REST & Socket.io Server",
+      "Node-cron & BullMQ Worker Engine",
+      "SSRF Filter & HTTP Ping / SSL Checker",
+      "Multi-Channel Alert Dispatcher",
+      "MongoDB & Redis Storage Layer"
+    ],
+    challenges: [
+      { 
+        issue: "Preventing Server-Side Request Forgery (SSRF) when pinging user-provided monitor URLs", 
+        solution: "Implemented custom internal IP regex validation blocking localhost, 127.0.0.1, 10.x.x.x, 192.168.x.x, and AWS metadata IPs", 
+        result: "Zero security vulnerabilities with strict OWASP compliance" 
+      },
+      { 
+        issue: "Ensuring zero-delay metric updates on live client dashboards during high-frequency monitor checks", 
+        solution: "Integrated Socket.io WebSocket broadcasts directly inside the background worker execution loop", 
+        result: "Instant live chart updates without client polling overhead" 
+      }
+    ],
+    performance: {
+      lighthouse: 96,
+      loading: "1.1s",
+      accessibility: 98,
+      seo: 95,
+      performance: 97
+    },
+    future: [
+      "Slack & PagerDuty Integration",
+      "Multi-Region Global Edge Ping Nodes",
+      "Synthetic User Journey Testing (Puppeteer)",
+      "Custom CNAME Domain Binding for Public Status Pages"
+    ],
+    links: {
+      demo: "#",
+      github: "https://github.com/jhapate0704/SaaS-Monitoring-platform",
+      docs: "https://github.com/jhapate0704/SaaS-Monitoring-platform/blob/main/README.md"
+    }
+  }
 ];
